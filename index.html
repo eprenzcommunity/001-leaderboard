@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eprenz Summit Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Lato', 'system-ui', 'sans-serif'] },
+          colors: {
+            eOrange: '#ff5900',   // International Orange
+            eGreen:  '#25c105',   // Harlequin
+            eBlue:   '#3aabef',   // Picton Blue
+            eNavy:   '#002c3e',   // Daintree
+            eGray:   '#819ba2',   // Granny Smith
+            eSoft:   '#f4f7f7'    // Porcelain
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="bg-eSoft text-eNavy font-sans antialiased">
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <!-- Shell card (like the dark example, but light) -->
+    <div class="rounded-3xl bg-white shadow-lg border border-gray-100 px-6 py-6 lg:px-10 lg:py-8 space-y-8">
+
+      <!-- Top bar -->
+      <header class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h1 class="text-3xl font-black tracking-tight">
+            Founders & Innovators <span class="text-eOrange">Leaderboard</span>
+          </h1>
+          <p class="mt-1 text-sm text-eGray">
+            Overall summit points plus key category winners.
+          </p>
+        </div>
+
+        <!-- Simple period toggle (visual hierarchy, no logic) -->
+        <div class="inline-flex self-start rounded-full bg-eSoft p-1 text-xs font-semibold text-eGray">
+          <button class="rounded-full bg-white px-3 py-1 shadow-sm border border-gray-200 text-eNavy">
+            Overall
+          </button>
+          <button class="rounded-full px-3 py-1">
+            Categories
+          </button>
+        </div>
+      </header>
+
+      <!-- TOP 3 HERO -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+            Top performers this summit
+          </h2>
+          <div class="flex items-center gap-2 text-[11px] text-eGray">
+            <!-- clock icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                d="M12 6v6l3 3m5-3a8 8 0 11-16 0 8 8 0 0116 0z" />
+            </svg>
+            <span>Live scoring during summit</span>
+          </div>
+        </div>
+
+        <!-- Three-column hero, center card emphasized -->
+        <div class="grid gap-4 md:grid-cols-3 md:items-end">
+          <!-- 2nd -->
+          <div class="rounded-2xl border border-gray-200 bg-eSoft px-4 py-4 flex flex-col gap-2">
+            <div class="flex items-center justify-between text-xs text-eGray">
+              <span class="inline-flex items-center gap-1">
+                <!-- medal icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                    d="M15.59 14.37L18 20l-6-3-6 3 2.41-5.63M12 4a4 4 0 110 8 4 4 0 010-8z" />
+                </svg>
+                2nd place
+              </span>
+              <span class="font-semibold text-eBlue">689 pts</span>
+            </div>
+            <div class="text-lg font-semibold">Michael R.</div>
+            <div class="text-xs text-eGray">High Deal Room score</div>
+          </div>
+
+          <!-- 1st (highlighted) -->
+          <div class="rounded-2xl border border-eOrange/40 bg-white px-4 py-5 shadow-md flex flex-col gap-2 md:py-7">
+            <div class="flex items-center justify-between text-xs">
+              <span class="inline-flex items-center gap-1 rounded-full bg-eSoft px-2 py-0.5 font-semibold text-eOrange">
+                <!-- trophy icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                    d="M8 12h8m-7 8h6M8 4h8v3a4 4 0 01-4 4 4 4 0 01-4-4V4zm0 0H6a2 2 0 00-2 2v1a4 4 0 004 4m8-7h2a2 2 0 012 2v1a4 4 0 01-4 4" />
+                </svg>
+                Overall Champion
+              </span>
+              <span class="text-[11px] font-semibold text-eGreen">742 pts</span>
+            </div>
+            <div class="text-xl font-black">Sarah M.</div>
+            <div class="text-xs text-eGray">Top in Registrations</div>
+          </div>
+
+          <!-- 3rd -->
+          <div class="rounded-2xl border border-gray-200 bg-eSoft px-4 py-4 flex flex-col gap-2">
+            <div class="flex items-center justify-between text-xs text-eGray">
+              <span class="inline-flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                    d="M15.59 14.37L18 20l-6-3-6 3 2.41-5.63M12 4a4 4 0 110 8 4 4 0 010-8z" />
+                </svg>
+                3rd place
+              </span>
+              <span class="font-semibold text-eNavy">655 pts</span>
+            </div>
+            <div class="text-lg font-semibold">Priya K.</div>
+            <div class="text-xs text-eGray">Summit Participation</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERALL TABLE (rest of ranks) -->
+      <section class="space-y-3">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+            Overall leaderboard (full list)
+          </h2>
+          <span class="text-[11px] text-eGray">Rank · Participant · Total points · Highlight</span>
+        </div>
+
+        <div class="overflow-hidden rounded-2xl border border-gray-200">
+          <table class="min-w-full text-sm">
+            <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
+              <tr>
+                <th class="px-4 py-2 text-left w-16">Rank</th>
+                <th class="px-4 py-2 text-left">Participant</th>
+                <th class="px-4 py-2 text-right w-32">Total Points</th>
+                <th class="px-4 py-2 text-left">Highlight</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <!-- Start from 4 since top 3 are featured above -->
+              <tr class="hover:bg-eSoft/60">
+                <td class="px-4 py-2 text-xs text-eGray">4</td>
+                <td class="px-4 py-2 font-semibold">Jonas L.</td>
+                <td class="px-4 py-2 text-right font-semibold">612</td>
+                <td class="px-4 py-2 text-xs text-eGray">Strong Eprenz Engagement</td>
+              </tr>
+              <tr class="hover:bg-eSoft/60">
+                <td class="px-4 py-2 text-xs text-eGray">5</td>
+                <td class="px-4 py-2 font-semibold">Aisha T.</td>
+                <td class="px-4 py-2 text-right font-semibold">598</td>
+                <td class="px-4 py-2 text-xs text-eGray">Balanced across categories</td>
+              </tr>
+              <tr class="hover:bg-eSoft/60">
+                <td class="px-4 py-2 text-xs text-eGray">6</td>
+                <td class="px-4 py-2">David R.</td>
+                <td class="px-4 py-2 text-right">574</td>
+                <td class="px-4 py-2 text-xs text-eGray">Deal Room closings</td>
+              </tr>
+              <tr class="hover:bg-eSoft/60">
+                <td class="px-4 py-2 text-xs text-eGray">7</td>
+                <td class="px-4 py-2">Lina W.</td>
+                <td class="px-4 py-2 text-right">553</td>
+                <td class="px-4 py-2 text-xs text-eGray">Summit workshop host</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- CATEGORY CARDS -->
+      <section class="grid gap-4 md:grid-cols-2">
+        <!-- Registration Impact -->
+        <article class="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-eSoft px-4 py-4">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">📈</span>
+              <h3 class="text-sm font-bold">Registration Impact</h3>
+            </div>
+            <!-- info icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-eGray" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
+                d="M11.25 11.25v3.75m0-7.5h.011M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <p class="text-xs text-eGray leading-relaxed">
+            Combined Registration Impact Score:<br>
+            Free registrations = <span class="font-semibold">1 point</span> each ·
+            Paid registrations = <span class="font-semibold">1 point per $1</span> generated.
+          </p>
+          <div class="rounded-lg bg-white p-3 text-xs">
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-eNavy">Top 3</span>
+              <span class="text-eGray">Score</span>
+            </div>
+            <div class="mt-2 space-y-1">
+              <div class="flex items-center justify-between">
+                <span>1. Sarah M.</span>
+                <span class="font-semibold text-eGreen">412</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>2. Michael R.</span>
+                <span class="font-semibold text-eBlue">365</span>
+              </div>
+              <div class="flex items-center justify-between">
+                <span>3. Aisha T.</span>
+                <span class="font-semibold">338</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Eprenz Engagement -->
+        <article class="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-eSoft px-4 py-4">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">💬</span>
+            <h3 class="text-sm font-bold">Eprenz Engagement</h3>
+          </div>
+          <p class="text-xs text-eGray">
+            Measures posts, comments, referrals and other community actions (weights configurable in the sheet).
+          </p>
+          <div class="rounded-lg bg-white p-3 text-xs flex items-center justify-between">
+            <span class="font-semibold text-eNavy">Current leader</span>
+            <span class="font-semibold text-eBlue">Priya K.</span>
+          </div>
+        </article>
+
+        <!-- Summit Participation -->
+        <article class="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-eSoft px-4 py-4">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🎤</span>
+            <h3 class="text-sm font-bold">Summit Participation</h3>
+          </div>
+          <p class="text-xs text-eGray">
+            Attendance, session check-ins, Q&amp;A, and workshop engagement.
+          </p>
+          <div class="rounded-lg bg-white p-3 text-xs flex items-center justify-between">
+            <span class="font-semibold text-eNavy">Current leader</span>
+            <span class="font-semibold text-eGreen">Priya K.</span>
+          </div>
+        </article>
+
+        <!-- Deal Room -->
+        <article class="flex flex-col gap-3 rounded-2xl border border-gray-200 bg-eSoft px-4 py-4">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🤝</span>
+            <h3 class="text-sm font-bold">Deal Room</h3>
+          </div>
+          <p class="text-xs text-eGray">
+            Tracks qualified intros, meetings booked, and deals influenced during the summit.
+          </p>
+          <div class="rounded-lg bg-white p-3 text-xs flex items-center justify-between">
+            <span class="font-semibold text-eNavy">Current leader</span>
+            <span class="font-semibold text-eNavy">Michael R.</span>
+          </div>
+        </article>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>
+
