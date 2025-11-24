@@ -16,12 +16,12 @@
         extend: {
           fontFamily: { sans: ['Lato', 'system-ui', 'sans-serif'] },
           colors: {
-            eOrange: '#ff5900',   // International Orange
-            eGreen:  '#25c105',   // Harlequin
-            eBlue:   '#3aabef',   // Picton Blue
-            eNavy:   '#002c3e',   // Daintree
-            eGray:   '#819ba2',   // Granny Smith
-            eSoft:   '#f4f7f7'    // Porcelain
+            eOrange: '#ff5900',
+            eGreen:  '#25c105',
+            eBlue:   '#3aabef',
+            eNavy:   '#002c3e',
+            eGray:   '#819ba2',
+            eSoft:   '#f4f7f7'
           }
         }
       }
@@ -30,9 +30,10 @@
 </head>
 
 <body class="bg-eSoft text-eNavy font-sans antialiased">
-  <div class="mx-auto max-w-6xl px-4 py-10">
-    <!-- Main shell -->
-    <div class="rounded-3xl bg-white shadow-lg border border-gray-100 px-6 py-6 lg:px-10 lg:py-8 space-y-8">
+  <!-- more vertical padding overall -->
+  <div class="mx-auto max-w-6xl px-4 py-16">
+    <!-- more breathing room inside card -->
+    <div class="rounded-3xl bg-white shadow-lg border border-gray-100 px-6 py-8 lg:px-10 lg:py-12 space-y-10">
 
       <!-- Top bar -->
       <header class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -44,33 +45,45 @@
             Category leaders first, overall ranking below.
           </p>
         </div>
-
-        <div class="inline-flex self-start rounded-full bg-eSoft p-1 text-xs font-semibold text-eGray">
-          <button class="rounded-full bg-white px-3 py-1 shadow-sm border border-gray-200 text-eNavy">
-            Summit
-          </button>
-          <button class="rounded-full px-3 py-1">
-            Daily
-          </button>
-        </div>
+        <!-- Summit / Daily removed -->
       </header>
 
-      <!-- HERO: Overall top 3 -->
-      <section class="space-y-4">
+      <!-- HERO: Top 3 -->
+      <section class="space-y-6">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
-            Overall top 3
+          <!-- Bigger title -->
+          <h2 class="text-5xl font-black text-eNavy tracking-tight">
+            Top 3 Leading
           </h2>
           <div class="flex items-center gap-2 text-[11px] text-eGray">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
                 d="M12 6v6l3 3m5-3a8 8 0 11-16 0 8 8 0 0116 0z" />
             </svg>
-            <span>Live points during the summit</span>
+            <span>Leaderboard updates everyday.</span>
           </div>
         </div>
 
-        <div class="grid gap-4 md:grid-cols-3 md:items-end">
+        <!-- Rules text + button under title -->
+        <div class="flex flex-col items-start gap-3">
+          <p class="text-sm text-eGray max-w-md leading-relaxed">
+            Want to see how every point is calculated? Review the full gamification rules and scoring.
+          </p>
+
+          <a
+            href="rules.html"
+            class="inline-flex items-center gap-2 bg-eBlue text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-500 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6v6l3 3m5-3a8 8 0 11-16 0 8 8 0 0116 0z"/>
+            </svg>
+            View Gamification Rules
+          </a>
+        </div>
+
+        <!-- Cards with more spacing from header -->
+        <div class="mt-8 grid gap-8 md:grid-cols-3 md:items-end">
           <!-- 2nd -->
           <div class="rounded-2xl border border-gray-200 bg-eSoft px-4 py-4 flex flex-col gap-2">
             <div class="flex items-center justify-between text-xs text-eGray">
@@ -84,23 +97,19 @@
               <span class="font-semibold text-eBlue">689 pts</span>
             </div>
             <div class="text-lg font-semibold">Michael R.</div>
-            <div class="text-xs text-eGray">High Deal Room score</div>
+            <div class="text-xs text-eGray">Total points across all leaderboards</div>
           </div>
 
           <!-- 1st -->
-          <div class="rounded-2xl border border-eOrange/40 bg-white px-4 py-5 shadow-md flex flex-col gap-2 md:py-7">
+          <div class="rounded-2xl border border-eOrange/40 bg-white px-4 py-6 shadow-md flex flex-col gap-2 md:py-8">
             <div class="flex items-center justify-between text-xs">
               <span class="inline-flex items-center gap-1 rounded-full bg-eSoft px-2 py-0.5 font-semibold text-eOrange">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"
-                    d="M8 12h8m-7 8h6M8 4h8v3a4 4 0 01-4 4 4 4 0 01-4-4V4zm0 0H6a2 2 0 00-2 2v1a4 4 0 004 4m8-7h2a2 2 0 012 2v1a4 4 0 01-4 4" />
-                </svg>
-                Overall Champion
+                Leader
               </span>
               <span class="text-[11px] font-semibold text-eGreen">742 pts</span>
             </div>
             <div class="text-xl font-black">Sarah M.</div>
-            <div class="text-xs text-eGray">Top in Registrations</div>
+            <div class="text-xs text-eGray">Total points across all leaderboards</div>
           </div>
 
           <!-- 3rd -->
@@ -116,21 +125,25 @@
               <span class="font-semibold text-eNavy">655 pts</span>
             </div>
             <div class="text-lg font-semibold">Priya K.</div>
-            <div class="text-xs text-eGray">Summit Participation</div>
+            <div class="text-xs text-eGray">Total points across all leaderboards</div>
           </div>
         </div>
       </section>
 
-      <!-- CATEGORY LEADERBOARDS (PRIMARY) -->
-      <section class="space-y-6">
+      <!-- CATEGORY LEADERBOARDS -->
+      <section class="space-y-8">
+
+        <!-- Registration Impact (title + desc dark blue) -->
         <div>
-          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
             1. Registration Impact
           </h2>
-          <p class="text-xs text-eGray mb-2">
+
+          <p class="text-xs text-eNavy mb-3">
             Free registrations = <span class="font-semibold">1 point</span> ·
-            Paid registrations = <span class="font-semibold">1 point per $1</span>.
+            Paid registrations = <span class="font-semibold">1 point per $2</span>.
           </p>
+
           <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
             <table class="min-w-full text-sm">
               <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
@@ -171,13 +184,15 @@
           </div>
         </div>
 
+        <!-- Eprenz Engagement (dark blue heading + description) -->
         <div>
-          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
             2. Eprenz Engagement
           </h2>
-          <p class="text-xs text-eGray mb-2">
-            Platform activity: posts, comments, referrals (weights configurable in the sheet).
+          <p class="text-xs text-eNavy mb-3">
+            Platform activity: posts, comments, referrals and other community actions.
           </p>
+
           <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
             <table class="min-w-full text-sm">
               <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
@@ -218,13 +233,15 @@
           </div>
         </div>
 
+        <!-- Summit Participation (dark blue heading + description) -->
         <div>
-          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
             3. Summit Participation
           </h2>
-          <p class="text-xs text-eGray mb-2">
-            Attendance, check-ins, Q&amp;A activity and workshop engagement.
+          <p class="text-xs text-eNavy mb-3">
+            Attendance, session check-ins, Q&amp;A activity and workshop engagement.
           </p>
+
           <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
             <table class="min-w-full text-sm">
               <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
@@ -265,13 +282,15 @@
           </div>
         </div>
 
+        <!-- Deal Room (dark blue heading + description) -->
         <div>
-          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
             4. Deal Room
           </h2>
-          <p class="text-xs text-eGray mb-2">
+          <p class="text-xs text-eNavy mb-3">
             Qualified intros, meetings booked, and deals influenced during the summit.
           </p>
+
           <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
             <table class="min-w-full text-sm">
               <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
@@ -311,15 +330,18 @@
             </table>
           </div>
         </div>
+
       </section>
 
-      <!-- OPTIONAL: full overall table (secondary) -->
-      <section class="space-y-3">
+      <!-- OVERALL FULL LIST -->
+      <section class="space-y-4">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm font-semibold text-eGray uppercase tracking-wide">
+          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
             Overall leaderboard (full list)
           </h2>
-          <span class="text-[11px] text-eGray">Use for final prize decisions.</span>
+          <span class="text-[11px] text-eNavy">
+            Total points across all leaderboards.
+          </span>
         </div>
 
         <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">

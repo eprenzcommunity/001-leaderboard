@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Eprenz Summit Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Lato -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Lato', 'system-ui', 'sans-serif'] },
+          colors: {
+            eOrange: '#ff5900',
+            eGreen:  '#25c105',
+            eBlue:   '#3aabef',
+            eNavy:   '#002c3e',
+            eGray:   '#819ba2',
+            eSoft:   '#f4f7f7'
+          }
+        }
+      }
