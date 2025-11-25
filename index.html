@@ -27,6 +27,84 @@
       }
     }
   </script>
+  <style>
+    /* Compact, consistent leaderboard tables */
+    .leader-table th {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #819ba2;
+    }
+    .leader-table th,
+    .leader-table td {
+      padding: 0.55rem 1rem;
+    }
+    .leader-table td {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .leader-table tbody tr:nth-child(odd) {
+      background-color: #f6f9fa;
+    }
+    .leader-table tbody tr:hover {
+      background-color: #edf4f8;
+    }
+    .leader-table th:first-child,
+    .leader-table td:first-child,
+    .leader-table th:nth-child(3),
+    .leader-table td:nth-child(3) {
+      text-align: right;
+    }
+    .score-top {
+      color: #25c105;
+      font-weight: 800;
+    }
+    .score-user {
+      color: #3aabef;
+      font-weight: 800;
+    }
+    .score-regular {
+      color: #002c3e;
+      font-weight: 700;
+    }
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(6px);
+      border: 1px solid #edf2f4;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+    }
+    .collapsible summary {
+      cursor: pointer;
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 12px;
+      font-weight: 700;
+      color: #002c3e;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background: #f4f7f7;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .collapsible[open] summary {
+      background: #e9f3ff;
+      color: #0f4f8a;
+    }
+    .collapsible summary::-webkit-details-marker {
+      display: none;
+    }
+    .collapsible .chevron {
+      transition: transform 0.2s ease;
+    }
+    .collapsible[open] .chevron {
+      transform: rotate(90deg);
+    }
+  </style>
 </head>
 
 <body class="bg-eSoft text-eNavy font-sans antialiased">
@@ -38,7 +116,7 @@
       <!-- Top bar -->
       <header class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 class="text-3xl font-black tracking-tight">
+          <h1 class="text-4xl sm:text-5xl font-black tracking-tight">
             Founders & Innovators <span class="text-eOrange">Leaderboard</span>
           </h1>
           <p class="mt-1 text-sm text-eGray">
@@ -48,12 +126,23 @@
         <!-- Summit / Daily removed -->
       </header>
 
+      <!-- Sticky category shortcuts -->
+      <nav class="sticky-nav mt-4 rounded-full px-3 py-2">
+        <ul class="flex items-center gap-2 overflow-x-auto text-[11px] font-semibold text-eNavy">
+          <li><a class="inline-flex items-center gap-1 rounded-full px-3 py-1 hover:bg-eSoft transition" href="#overall">Overall</a></li>
+          <li><a class="inline-flex items-center gap-1 rounded-full px-3 py-1 hover:bg-eSoft transition" href="#registration">Registration</a></li>
+          <li><a class="inline-flex items-center gap-1 rounded-full px-3 py-1 hover:bg-eSoft transition" href="#engagement">Community Engagement</a></li>
+          <li><a class="inline-flex items-center gap-1 rounded-full px-3 py-1 hover:bg-eSoft transition" href="#summit">Summit</a></li>
+          <li><a class="inline-flex items-center gap-1 rounded-full px-3 py-1 hover:bg-eSoft transition" href="#deal-room">Deal Room</a></li>
+        </ul>
+      </nav>
+
       <!-- HERO: Top 3 -->
       <section class="space-y-6">
         <div class="flex items-center justify-between">
           <!-- Bigger title -->
-          <h2 class="text-5xl font-black text-eNavy tracking-tight">
-            Top 3 Leading Overall
+          <h2 class="text-3xl sm:text-4xl font-black text-eNavy tracking-tight">
+            Top 3 Overall Leaders
           </h2>
           <div class="flex items-center gap-2 text-[11px] text-eGray">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,24 +151,6 @@
             </svg>
             <span>Leaderboard updates everyday.</span>
           </div>
-        </div>
-
-        <!-- Rules text + button under title -->
-        <div class="flex flex-col items-start gap-3">
-          <p class="text-sm text-eGray max-w-md leading-relaxed">
-            Want to see how every point is calculated? Review the full gamification rules and scoring.
-          </p>
-
-          <a
-            href="rules.html"
-            class="inline-flex items-center gap-2 bg-eBlue text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-500 transition"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.7">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 6v6l3 3m5-3a8 8 0 11-16 0 8 8 0 0116 0z"/>
-            </svg>
-            View Gamification Rules
-          </a>
         </div>
 
         <!-- Cards with more spacing from header -->
@@ -94,7 +165,7 @@
                 </svg>
                 2nd place
               </span>
-              <span class="font-semibold text-eBlue">689 pts</span>
+              <span class="text-2xl md:text-3xl font-extrabold text-eBlue text-right leading-tight">689 pts</span>
             </div>
             <div class="text-lg font-semibold">Michael R.</div>
             <div class="text-xs text-eGray">Total points across all leaderboards</div>
@@ -106,7 +177,7 @@
               <span class="inline-flex items-center gap-1 rounded-full bg-eSoft px-2 py-0.5 font-semibold text-eOrange">
                 Leader
               </span>
-              <span class="text-[11px] font-semibold text-eGreen">742 pts</span>
+              <span class="text-2xl md:text-3xl font-extrabold text-eGreen text-right leading-tight">742 pts</span>
             </div>
             <div class="text-xl font-black">Sarah M.</div>
             <div class="text-xs text-eGray">Total points across all leaderboards</div>
@@ -122,276 +193,442 @@
                 </svg>
                 3rd place
               </span>
-              <span class="font-semibold text-eNavy">655 pts</span>
+              <span class="text-2xl md:text-3xl font-extrabold text-eNavy text-right leading-tight">655 pts</span>
             </div>
             <div class="text-lg font-semibold">Priya K.</div>
             <div class="text-xs text-eGray">Total points across all leaderboards</div>
           </div>
+        </div>
+
+        <!-- Rules text + button under top 3 block -->
+        <div class="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
+          <p class="text-sm text-eGray max-w-lg leading-relaxed">
+            Want to see how every point is calculated? Review the full gamification rules and scoring.
+          </p>
+
+          <a
+            href="rules.html"
+            class="inline-flex items-center gap-2 bg-eBlue text-white text-xs font-semibold px-4 py-2 rounded-full shadow hover:bg-blue-500 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.7">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 6v6l3 3m5-3a8 8 0 11-16 0 8 8 0 0116 0z"/>
+            </svg>
+            View Gamification Rules
+          </a>
         </div>
       </section>
 
       <!-- CATEGORY LEADERBOARDS -->
       <section class="space-y-8">
 
-        <!-- Registration Impact (title + desc dark blue) -->
-        <div>
-          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
-            1. Registration Impact
-          </h2>
+        <!-- Event Registration (title + desc dark blue) -->
+        <div id="registration" class="scroll-mt-28">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 text-eOrange">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.5A1.5 1.5 0 014.5 7H8a2 2 0 104 0h6.5A1.5 1.5 0 0120 8.5v7A1.5 1.5 0 0118.5 17H6a2 2 0 10-4 0V8.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 11h4" />
+              </svg>
+              <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
+                1. Event Registration
+              </h2>
+            </div>
+          </div>
 
           <p class="text-xs text-eNavy mb-3">
             Free registrations = <span class="font-semibold">1 point</span> ·
-            Paid registrations = <span class="font-semibold">1 point per $2</span>.
+            Paid registrations = <span class="font-semibold">2 point per $1</span>.
           </p>
 
-          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-            <table class="min-w-full text-sm">
-              <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
-                <tr>
-                  <th class="px-4 py-2 text-left w-16">Rank</th>
-                  <th class="px-4 py-2 text-left">Participant</th>
-                  <th class="px-4 py-2 text-right w-32">Impact Score</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-100">
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs font-semibold text-eNavy">1</td>
-                  <td class="px-4 py-2 font-semibold">Sarah M.</td>
-                  <td class="px-4 py-2 text-right font-bold text-eGreen">412</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">2</td>
-                  <td class="px-4 py-2">Michael R.</td>
-                  <td class="px-4 py-2 text-right font-semibold text-eBlue">365</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">3</td>
-                  <td class="px-4 py-2">Aisha T.</td>
-                  <td class="px-4 py-2 text-right font-semibold">338</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">4</td>
-                  <td class="px-4 py-2">Jonas L.</td>
-                  <td class="px-4 py-2 text-right">301</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">5</td>
-                  <td class="px-4 py-2">Lina W.</td>
-                  <td class="px-4 py-2 text-right">287</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Eprenz Engagement (dark blue heading + description) -->
-        <div>
-          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
-            2. Eprenz Engagement
-          </h2>
-          <p class="text-xs text-eNavy mb-3">
-            Platform activity: posts, comments, referrals and other community actions.
-          </p>
-
-          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-            <table class="min-w-full text-sm">
-              <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
-                <tr>
-                  <th class="px-4 py-2 text-left w-16">Rank</th>
-                  <th class="px-4 py-2 text-left">Participant</th>
-                  <th class="px-4 py-2 text-right w-32">Engagement Score</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-100">
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs font-semibold text-eNavy">1</td>
-                  <td class="px-4 py-2 font-semibold">Priya K.</td>
-                  <td class="px-4 py-2 text-right font-bold text-eBlue">198</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">2</td>
-                  <td class="px-4 py-2">Sarah M.</td>
-                  <td class="px-4 py-2 text-right font-semibold">176</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">3</td>
-                  <td class="px-4 py-2">Lina W.</td>
-                  <td class="px-4 py-2 text-right">163</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">4</td>
-                  <td class="px-4 py-2">David R.</td>
-                  <td class="px-4 py-2 text-right">150</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">5</td>
-                  <td class="px-4 py-2">Aisha T.</td>
-                  <td class="px-4 py-2 text-right">141</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <details class="collapsible mt-2" data-expand-desktop="true">
+            <summary>
+              <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              See Top 5
+            </summary>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
+              <table class="leader-table min-w-full text-sm">
+                <thead class="bg-eSoft">
+                  <tr>
+                    <th class="w-16">Rank</th>
+                    <th class="text-left">Participant</th>
+                    <th class="w-32">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm font-semibold text-eNavy">1</td>
+                    <td class="px-4 py-2 font-semibold">Sarah M.</td>
+                    <td class="px-4 py-2 text-right text-base score-top">412</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">2</td>
+                    <td class="px-4 py-2">Michael R.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">365</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">3</td>
+                    <td class="px-4 py-2">Aisha T.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">338</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">4</td>
+                    <td class="px-4 py-2">Jonas L.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">301</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">5</td>
+                    <td class="px-4 py-2">Lina W.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">287</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
         </div>
 
         <!-- Summit Participation (dark blue heading + description) -->
-        <div>
-          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
-            3. Summit Participation
-          </h2>
+        <div id="summit" class="scroll-mt-28">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 text-eBlue">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 9h14M7 12h6m-6 3h4" />
+                <rect x="4" y="7" width="16" height="13" rx="2" ry="2" />
+              </svg>
+              <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
+                2. Summit Participation (Backstage Platform)
+              </h2>
+            </div>
+          </div>
           <p class="text-xs text-eNavy mb-3">
             Attendance, session check-ins, Q&amp;A activity and workshop engagement.
           </p>
 
-          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-            <table class="min-w-full text-sm">
-              <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
-                <tr>
-                  <th class="px-4 py-2 text-left w-16">Rank</th>
-                  <th class="px-4 py-2 text-left">Participant</th>
-                  <th class="px-4 py-2 text-right w-32">Participation Score</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-100">
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs font-semibold text-eNavy">1</td>
-                  <td class="px-4 py-2 font-semibold">Priya K.</td>
-                  <td class="px-4 py-2 text-right font-bold text-eGreen">225</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">2</td>
-                  <td class="px-4 py-2">Jonas L.</td>
-                  <td class="px-4 py-2 text-right">207</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">3</td>
-                  <td class="px-4 py-2">Sarah M.</td>
-                  <td class="px-4 py-2 text-right">192</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">4</td>
-                  <td class="px-4 py-2">Michael R.</td>
-                  <td class="px-4 py-2 text-right">180</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">5</td>
-                  <td class="px-4 py-2">Lina W.</td>
-                  <td class="px-4 py-2 text-right">168</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <details class="collapsible mt-2" data-expand-desktop="true">
+            <summary>
+              <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              See Top 5
+            </summary>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
+              <table class="leader-table min-w-full text-sm">
+                <thead class="bg-eSoft">
+                  <tr>
+                    <th class="w-16">Rank</th>
+                    <th class="text-left">Participant</th>
+                    <th class="w-32">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm font-semibold text-eNavy">1</td>
+                    <td class="px-4 py-2 font-semibold">Priya K.</td>
+                    <td class="px-4 py-2 text-right text-base score-top">225</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">2</td>
+                    <td class="px-4 py-2">Jonas L.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">207</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">3</td>
+                    <td class="px-4 py-2">Sarah M.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">192</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">4</td>
+                    <td class="px-4 py-2">Michael R.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">180</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">5</td>
+                    <td class="px-4 py-2">Lina W.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">168</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
         </div>
 
-        <!-- Deal Room (dark blue heading + description) -->
+        <!-- Community Engagement (dark blue heading + description) -->
+        <div id="engagement" class="scroll-mt-28">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 text-eNavy">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M7 8h10M7 12h6" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 5h14a2 2 0 012 2v7a3 3 0 01-3 3h-5l-4 4v-4H6a3 3 0 01-3-3V7a2 2 0 012-2z" />
+              </svg>
+              <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
+                3. Community Engagement (Mighty Networks)
+              </h2>
+            </div>
+          </div>
+          <p class="text-xs text-eNavy mb-3">
+            Platform activity: posts, comments, referrals and other community actions.
+          </p>
+
+          <details class="collapsible mt-2" data-expand-desktop="true">
+            <summary>
+              <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              See Top 5
+            </summary>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
+              <table class="leader-table min-w-full text-sm">
+                <thead class="bg-eSoft">
+                  <tr>
+                    <th class="w-16">Rank</th>
+                    <th class="text-left">Participant</th>
+                    <th class="w-32">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm font-semibold text-eNavy">1</td>
+                    <td class="px-4 py-2 font-semibold">Priya K.</td>
+                    <td class="px-4 py-2 text-right text-base score-top">198</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">2</td>
+                    <td class="px-4 py-2">Sarah M.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">176</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">3</td>
+                    <td class="px-4 py-2">Lina W.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">163</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">4</td>
+                    <td class="px-4 py-2">David R.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">150</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">5</td>
+                    <td class="px-4 py-2">Aisha T.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">141</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
+
+        <!-- Deal Room Participation (dark blue heading + description) -->
+        <div id="deal-room" class="scroll-mt-28">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 text-eGreen">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.7">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.5l4-3A2 2 0 0111 10h2a2 2 0 011.5.7l4 4.8a1 1 0 01-.16 1.44l-1.08.81a1 1 0 01-1.28-.12l-2.68-2.68-1.5 1.25a2 2 0 01-2.56-.1L7.4 13.4l-1.62 1.21a1 1 0 01-1.28-.15l-.73-.85a1 1 0 01.13-1.41z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7.5l1.5-1.5a2 2 0 012.83 0L17 9" />
+              </svg>
+              <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
+                4. Deal Room Participation
+              </h2>
+            </div>
+          </div>
+          <p class="text-xs text-eNavy mb-3">
+            Qualified intros, meetings booked, and deals influenced during the summit.
+          </p>
+
+          <details class="collapsible mt-2" data-expand-desktop="true">
+            <summary>
+              <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              See Top 5
+            </summary>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
+              <table class="leader-table min-w-full text-sm">
+                <thead class="bg-eSoft">
+                  <tr>
+                    <th class="w-16">Rank</th>
+                    <th class="text-left">Participant</th>
+                    <th class="w-32">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm font-semibold text-eNavy">1</td>
+                    <td class="px-4 py-2 font-semibold">Michael R.</td>
+                    <td class="px-4 py-2 text-right text-base score-top">184</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">2</td>
+                    <td class="px-4 py-2">Sarah M.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">163</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">3</td>
+                    <td class="px-4 py-2">David R.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">152</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">4</td>
+                    <td class="px-4 py-2">Aisha T.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">141</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">5</td>
+                    <td class="px-4 py-2">Lina W.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">132</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+        </div>
+
+        <!-- Bonus Point (duplicated from Deal Room) -->
         <div>
           <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
-            4. Deal Room
+            5. Bonus Point
           </h2>
           <p class="text-xs text-eNavy mb-3">
             Qualified intros, meetings booked, and deals influenced during the summit.
           </p>
 
-          <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-            <table class="min-w-full text-sm">
-              <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
-                <tr>
-                  <th class="px-4 py-2 text-left w-16">Rank</th>
-                  <th class="px-4 py-2 text-left">Participant</th>
-                  <th class="px-4 py-2 text-right w-32">Deal Score</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-gray-100">
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs font-semibold text-eNavy">1</td>
-                  <td class="px-4 py-2 font-semibold">Michael R.</td>
-                  <td class="px-4 py-2 text-right font-bold text-eBlue">184</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">2</td>
-                  <td class="px-4 py-2">Sarah M.</td>
-                  <td class="px-4 py-2 text-right">163</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">3</td>
-                  <td class="px-4 py-2">David R.</td>
-                  <td class="px-4 py-2 text-right">152</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">4</td>
-                  <td class="px-4 py-2">Aisha T.</td>
-                  <td class="px-4 py-2 text-right">141</td>
-                </tr>
-                <tr class="hover:bg-eSoft/60">
-                  <td class="px-4 py-2 text-xs text-eGray">5</td>
-                  <td class="px-4 py-2">Lina W.</td>
-                  <td class="px-4 py-2 text-right">132</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <details class="collapsible mt-2" data-expand-desktop="true">
+            <summary>
+              <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              See Top 5
+            </summary>
+            <div class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
+              <table class="leader-table min-w-full text-sm">
+                <thead class="bg-eSoft">
+                  <tr>
+                    <th class="w-16">Rank</th>
+                    <th class="text-left">Participant</th>
+                    <th class="w-32">Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm font-semibold text-eNavy">1</td>
+                    <td class="px-4 py-2 font-semibold">Michael R.</td>
+                    <td class="px-4 py-2 text-right text-base score-top">184</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">2</td>
+                    <td class="px-4 py-2">Sarah M.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">163</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">3</td>
+                    <td class="px-4 py-2">David R.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">152</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">4</td>
+                    <td class="px-4 py-2">Aisha T.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">141</td>
+                  </tr>
+                  <tr class="hover:bg-eSoft/60">
+                    <td class="px-4 py-2 text-sm text-eGray">5</td>
+                    <td class="px-4 py-2">Lina W.</td>
+                    <td class="px-4 py-2 text-right text-base score-regular">132</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
         </div>
 
       </section>
 
       <!-- OVERALL FULL LIST -->
-      <section class="space-y-4">
+      <section class="space-y-4 scroll-mt-28" id="overall">
         <div class="flex items-center justify-between">
-          <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
-            Overall leaderboard (full list)
-          </h2>
+          <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2 text-eOrange">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 3.5l2.16 4.37 4.82.7-3.49 3.4.82 4.78L12 14.9l-4.31 2.25.82-4.78-3.49-3.4 4.82-.7L12 3.5z"/>
+              </svg>
+              <h2 class="text-sm font-semibold text-eNavy uppercase tracking-wide">
+                Overall leaderboard (full list)
+              </h2>
+            </div>
+          </div>
           <span class="text-[11px] text-eNavy">
             Total points across all leaderboards.
           </span>
         </div>
 
-        <div class="overflow-hidden rounded-2xl border border-gray-200 bg-white">
-          <table class="min-w-full text-sm">
-            <thead class="bg-eSoft text-xs uppercase tracking-wide text-eGray">
-              <tr>
-                <th class="px-4 py-2 text-left w-16">Rank</th>
-                <th class="px-4 py-2 text-left">Participant</th>
-                <th class="px-4 py-2 text-right w-32">Total Points</th>
-                <th class="px-4 py-2 text-left">Highlight</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-100">
-              <tr class="hover:bg-eSoft/60">
-                <td class="px-4 py-2 text-xs font-semibold text-eNavy">1</td>
-                <td class="px-4 py-2 font-semibold">Sarah M.</td>
-                <td class="px-4 py-2 text-right font-bold text-eGreen">742</td>
-                <td class="px-4 py-2 text-xs text-eGray">Top in Registrations</td>
-              </tr>
-              <tr class="hover:bg-eSoft/60">
-                <td class="px-4 py-2 text-xs font-semibold text-eNavy">2</td>
-                <td class="px-4 py-2 font-semibold">Michael R.</td>
-                <td class="px-4 py-2 text-right font-bold text-eBlue">689</td>
-                <td class="px-4 py-2 text-xs text-eGray">High Deal Room score</td>
-              </tr>
-              <tr class="hover:bg-eSoft/60">
-                <td class="px-4 py-2 text-xs font-semibold text-eNavy">3</td>
-                <td class="px-4 py-2 font-semibold">Priya K.</td>
-                <td class="px-4 py-2 text-right font-semibold">655</td>
-                <td class="px-4 py-2 text-xs text-eGray">Summit Participation</td>
-              </tr>
-              <tr class="hover:bg-eSoft/60">
-                <td class="px-4 py-2 text-xs text-eGray">4</td>
-                <td class="px-4 py-2">Jonas L.</td>
-                <td class="px-4 py-2 text-right">612</td>
-                <td class="px-4 py-2 text-xs text-eGray">Strong Engagement</td>
-              </tr>
-              <tr class="hover:bg-eSoft/60">
-                <td class="px-4 py-2 text-xs text-eGray">5</td>
-                <td class="px-4 py-2">Aisha T.</td>
-                <td class="px-4 py-2 text-right">598</td>
-                <td class="px-4 py-2 text-xs text-eGray">Balanced across categories</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <details class="collapsible mt-2" open>
+          <summary>
+            <svg xmlns="http://www.w3.org/2000/svg" class="chevron h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+            See full list
+          </summary>
+          <div class="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
+            <table class="leader-table min-w-full text-sm">
+              <thead class="bg-eSoft">
+                <tr>
+                  <th class="w-16">Rank</th>
+                  <th class="text-left">Participant</th>
+                  <th class="w-32">Total Points</th>
+                  <th class="text-left">Highlight</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                <tr class="hover:bg-eSoft/60">
+                  <td class="px-4 py-2 text-sm font-semibold text-eNavy">1</td>
+                  <td class="px-4 py-2 font-semibold">Sarah M.</td>
+                  <td class="px-4 py-2 text-right text-base score-top">742</td>
+                  <td class="px-4 py-2 text-sm text-eGray">Top in Registrations</td>
+                </tr>
+                <tr class="hover:bg-eSoft/60">
+                  <td class="px-4 py-2 text-sm font-semibold text-eNavy">2</td>
+                  <td class="px-4 py-2 font-semibold">Michael R.</td>
+                  <td class="px-4 py-2 text-right text-base score-regular">689</td>
+                  <td class="px-4 py-2 text-sm text-eGray">High Deal Room score</td>
+                </tr>
+                <tr class="hover:bg-eSoft/60">
+                  <td class="px-4 py-2 text-sm font-semibold text-eNavy">3</td>
+                  <td class="px-4 py-2 font-semibold">Priya K.</td>
+                  <td class="px-4 py-2 text-right text-base score-regular">655</td>
+                  <td class="px-4 py-2 text-sm text-eGray">Summit Participation</td>
+                </tr>
+                <tr class="hover:bg-eSoft/60">
+                  <td class="px-4 py-2 text-sm text-eGray">4</td>
+                  <td class="px-4 py-2">Jonas L.</td>
+                  <td class="px-4 py-2 text-right text-base score-regular">612</td>
+                  <td class="px-4 py-2 text-sm text-eGray">Strong Engagement</td>
+                </tr>
+                <tr class="hover:bg-eSoft/60">
+                  <td class="px-4 py-2 text-sm text-eGray">5</td>
+                  <td class="px-4 py-2">Aisha T.</td>
+                  <td class="px-4 py-2 text-right text-base score-regular">598</td>
+                  <td class="px-4 py-2 text-sm text-eGray">Balanced across categories</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
       </section>
 
     </div>
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+      document.querySelectorAll('.collapsible[data-expand-desktop="true"]').forEach((el) => {
+        if (isDesktop) {
+          el.setAttribute('open', '');
+        } else {
+          el.removeAttribute('open');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
-
